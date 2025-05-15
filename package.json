@@ -16,8 +16,18 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
-    "express": "^4.16.3",
+    "express": "^5.0.0",
     "express-handlebars": "^3.0.0",
+    "mysql2": "^3.14.1",
     "pug": "^2.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anurags32/projec_ecomers.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Anurags32/projec_ecomers/issues"
+  },
+  "homepage": "https://github.com/Anurags32/projec_ecomers#readme"
 }
