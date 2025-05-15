@@ -1,12 +1,12 @@
 const Product = require('../models/product');
 
 exports.getProducts = (req, res, next) => {
-  Product.fetchAll(products => {
+  Product.fetchAll().then().catch(err => console.log(err)); 
     res.render('shop/product-list', {
       prods: products,
       pageTitle: 'All Products',
       path: '/products'
-    });
+    
   });
 };
 
