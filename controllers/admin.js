@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const sequelize = require('../util/database');
 
 exports.getAddProduct = (req, res, next) => {
   res.render('admin/add-product', {
@@ -15,9 +16,22 @@ exports.postAddProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  const product = new Product(title, imageUrl, description, price);
-  product.save();
-  res.redirect('/');
+  Product.create({
+    title: title,
+    price: price,
+    imageUrl: imageUrl,
+    description: description
+  }).then(result => {
+    console.log(result);
+    console.log('Created Product');
+    res.redirect('/');
+    // 
+  }).catch(err => {
+    console.log(err);
+  });
+  // const product = new Product(title, imageUrl, description, price);
+  // product.save();
+  // res.redirect('/');
 };
 
 exports.getProducts = (req, res, next) => {

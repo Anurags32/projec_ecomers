@@ -9,16 +9,27 @@ exports.getProducts = (req, res, next) => {
     
   });
 };
-
 exports.getIndex = (req, res, next) => {
-  Product.fetchAll(products => {
-    res.render('shop/index', {
-      prods: products,
-      pageTitle: 'Shop',
-      path: '/'
-    });
-  });
+  Product.findAll() // ✅ Sequelize method to fetch all rows
+    .then(products => {
+      res.render('shop/index', {
+        prods: products,
+        pageTitle: 'Shop',
+        path: '/'
+      });
+    })
+    .catch(err => console.log(err));
 };
+
+// exports.getIndex = (req, res, next) => {
+//   Product.fetchAll(products => {
+//     res.render('shop/index', {
+//       prods: products,
+//       pageTitle: 'Shop',
+//       path: '/'
+//     });
+//   });
+// };
 
 exports.getCart = (req, res, next) => {
   res.render('shop/cart', {
